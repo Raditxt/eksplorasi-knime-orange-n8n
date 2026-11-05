@@ -13,13 +13,13 @@ Dataset dibaca langsung dari folder `datasets/` di repo ini, jadi notebook bisa 
 
 Orange juga library Python (`pip install orange3`). Widget-nya bisa ditulis ulang sebagai kode dan dijalankan di Colab.
 
-| Skenario (7 fitur) | GUI Orange (F1) | Colab (F1) |
-|---|---:|---:|
-| A. Tanpa balancing | 27,1% | 27,1% |
-| B. Undersampling acak | 26,9% | 26,9% |
-| C. SMOTE-NC | 24,7% | 24,3% |
+| Skenario (7 fitur) | GUI Orange | Notebook di Windows (Python Orange) | Notebook di Colab |
+|---|---:|---:|---:|
+| A. Tanpa balancing (F1) | 27,1% | 27,1% | 27,1% |
+| B. Undersampling acak (F1) | 26,9% | 26,9% | 26,9% |
+| C. SMOTE-NC (F1) | 24,7% | 24,7% | 24,3% |
 
-Skenario A dan B identik. Selisih kecil di SMOTE-NC bukan karena versi scikit-learn (sudah diuji dengan versi yang sama, 1.5.2). Dugaan yang tersisa: perbedaan sistem operasi dalam memilih tetangga terdekat yang jaraknya seri, atau perbedaan cara membaca CSV. Penjelasannya ada di notebook.
+Di lingkungan yang sama (Windows), notebook mereproduksi GUI Orange 100%. Di Colab (Linux), hanya SMOTE-NC yang selisih sekitar 0,4 poin. Penyebabnya bukan versi pustaka atau kode, melainkan perbedaan platform dalam memilih tetangga terdekat yang jaraknya seri.
 
 **Eksperimen tambahan:** dengan 15 fitur (semua kecuali `duration`), SMOTE-NC menjadi skenario terbaik (F1 38,5%, dibanding 32,0% tanpa balancing). Artinya efek balancing sangat bergantung pada kualitas fitur yang dipakai.
 
