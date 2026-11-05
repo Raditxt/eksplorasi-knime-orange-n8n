@@ -1,0 +1,15 @@
+# Dataset besar (>100 MB, melebihi batas GitHub)
+datasets/GlobalLandTemperaturesByCity.csv
+
+# File sementara KNIME
+.knimeLock
+*.knimeLock
+
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
+
+# Sistem operasi
+.DS_Store
+Thumbs.db
+desktop.ini
