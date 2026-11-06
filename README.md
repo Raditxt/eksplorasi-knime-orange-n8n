@@ -12,7 +12,7 @@ Repositori ini berisi hasil magang saya: workflow, dataset, laporan, dan video t
 | 2 | KNIME: penanganan unbalanced dataset (Equal Size Sampling & SMOTE) | ✅ Selesai + video | [`knime/06-unbalanced-dataset/`](knime/06-unbalanced-dataset/) |
 | 3 | Orange Data Mining: eksplorasi fitur dan perbandingan dengan KNIME | ✅ Selesai | [`orange/`](orange/) |
 | 4 | Orange + Python: balancing dengan imbalanced-learn | ✅ Selesai | [`orange/`](orange/) |
-| 5 | Kompatibilitas dengan Google Colab | 🚧 Berjalan (Orange ✅, KNIME menyusul) | [`colab/`](colab/) |
+| 5 | Kompatibilitas dengan Google Colab | ✅ Selesai (Orange & KNIME) | [`colab/`](colab/) |
 | 6 | n8n untuk automation | ⏳ Belum | [`n8n/`](n8n/) |
 | 7 | Soulbound Blockchain | ⏳ Belum | – |
 

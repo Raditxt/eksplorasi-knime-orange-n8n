@@ -35,6 +35,24 @@ Balancing **hanya diterapkan pada data latih**, sedangkan data uji tetap pada di
 
 **Ringkasan:**
 - Undersampling menaikkan recall lebih dari dua kali lipat, tetapi precision dan accuracy turun tajam. Cocok kalau prioritasnya tidak melewatkan nasabah potensial.
-- SMOTE justru lebih buruk dari baseline. Penyebab paling mungkin: *Category to Number* memberi angka acak pada kategori nominal, lalu SMOTE menginterpolasi angka tersebut sehingga terbentuk kategori sintetis yang tidak bermakna. Varian yang tepat untuk data campuran adalah **SMOTE-NC**, yang diuji di [Orange + Python](../../orange/).
+- SMOTE justru lebih buruk dari baseline.
+
+> ⚠️ **Catatan koreksi:** hasil SMOTE di atas disebabkan **kesalahan pada workflow**, bukan teknik SMOTE. Model di cabang SMOTE dilatih dengan data hasil *Category to Number* (kolom kategori sudah jadi angka), tetapi data uji yang masuk ke *Decision Tree Predictor (#11)* masih berupa teks. Akibatnya lima dari tujuh kolom tidak terbaca dan model praktis menebak acak (Kappa 0,014).
+>
+> Hal ini dibuktikan di [notebook Colab 02](../../colab/02_knime_balancing_di_colab.ipynb): model PMML dari KNIME yang diberi data teks menghasilkan angka yang sama dengan Scorer di atas.
+>
+> **Perbaikan:** tambahkan node **Category to Number (Apply)**. Masukkan port PMML dari *Category to Number (#4)* dan data uji dari *Table Partitioner*, lalu sambungkan output-nya ke *Decision Tree Predictor (#11)*. Setelah itu workflow perlu dijalankan ulang untuk mendapatkan angka SMOTE yang benar.
+
+Untuk data campuran numerik dan kategorikal, varian yang lebih tepat adalah **SMOTE-NC**, yang diuji di [Orange + Python](../../orange/) dan [notebook Colab](../../colab/).
+
+## Model PMML
+
+Folder [`pmml/`](pmml/) berisi model yang diekspor dari workflow ini, untuk dipakai di luar KNIME:
+
+| File | Asal |
+|---|---|
+| `model_tanpa_balancing.pmml` | Decision Tree Learner (#6) |
+| `model_smote.pmml` | Decision Tree Learner (#8) |
+| `category_to_number.pmml` | Category to Number (#4) |
 
 Analisis lengkap ada di [laporan Pekan 3](../../laporan/03_Laporan_Pekan3_KNIME_Unbalanced.pdf).
